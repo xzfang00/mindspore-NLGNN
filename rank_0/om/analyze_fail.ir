@@ -1,0 +1,358 @@
+# 1.This file shows the parsed IR info when graph evaluating failed to help find the problem.
+# 2.You can search the last `------------------------>` to the node which is inferred failed.
+# 3.Refer to https://www.mindspore.cn/search?inputValue=analyze_fail.ir to get more instructions.
+# ===============================================================================
+
+subgraph attr:
+subgraph instance: construct.Default.14 : 0x707dca0
+# In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:2/def construct(/
+subgraph @construct.Default.14(%para1_x, %para2_src_idx, %para3_dst_idx, %para4_n_nodes, %para5_n_edges, %para6_bias, %para7_attn_s, %para8_attn_d, %para9_fc.weight) {
+  %1(FILL) = ClassType()
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:20/    FILL = ms.ops.Fill()/
+  %2(IS_INF) = ClassType()
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:22/    IS_INF = ms.ops.IsInf()/
+  %3(MASKED_FILL) = ClassType()
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:21/    MASKED_FILL = ms.ops.MaskedFill()/
+  %4(SCATTER_MAX) = ClassType()
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:16/    SCATTER_MAX = ms.ops.TensorScatterMax()/
+  %5(SCATTER_MIN) = ClassType()
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:17/    SCATTER_MIN = ms.ops.TensorScatterMin()/
+  %6(RESHAPE) = ClassType()
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:24/    RESHAPE = ms.ops.Reshape()/
+  %7(фSHAPE) = ClassType()
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:44/                ZEROS((n_nodes,) + SHAPE(SCATTER_INPUT_SNAPSHOT3)[1:], SCATTER_INPUT_SNAPSHOT3.dtype),/
+  %8([CNode]19) = %7(%para2_фsrc_idx)
+      : (<Tensor[Int32], (998)>) -> (<Tuple[Int64], TupleShape(NoShape)>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:25/    scatter_src_idx = RESHAPE(src_idx, (SHAPE(src_idx)[0], 1))/
+  %9([CNode]20) = S-Prim-getitem(%8, I64(0))
+      : (<Tuple[Int64], TupleShape(NoShape)>, <Int64, NoShape>) -> (<Int64, NoShape>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:25/    scatter_src_idx = RESHAPE(src_idx, (SHAPE(src_idx)[0], 1))/
+  %10([CNode]21) = S-Prim-MakeTuple(%9, I64(1))
+      : (<Int64, NoShape>, <Int64, NoShape>) -> (<Tuple[Int64*2], TupleShape(NoShape, NoShape)>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:25/    scatter_src_idx = RESHAPE(src_idx, (SHAPE(src_idx)[0], 1))/
+  %11(scatter_src_idx) = %6(%para2_фsrc_idx, %10)
+      : (<Tensor[Int32], (998)>, <Tuple[Int64*2], TupleShape(NoShape, NoShape)>) -> (<Tensor[Int32], (998, 1)>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:25/    scatter_src_idx = RESHAPE(src_idx, (SHAPE(src_idx)[0], 1))/
+  %12([CNode]22) = MakeTuple(%1, %2, %3, %4, %5, %11)
+      : (<Func, NoShape>, <Func, NoShape>, <Func, NoShape>, <Func, NoShape>, <Func, NoShape>, <Tensor[Int32], (998, 1)>) -> (<Tuple[Func*5,Tensor[Int32]], TupleShape(NoShape, NoShape, NoShape, NoShape, NoShape, (998, 1))>)
+      #scope: (Default)
+  %13([CNode]23) = StopGradient(%12)
+      : (<Tuple[Func*5,Tensor[Int32]], TupleShape(NoShape, NoShape, NoShape, NoShape, NoShape, (998, 1))>) -> (<Tuple[Func*5,Tensor[Int32]], TupleShape(NoShape, NoShape, NoShape, NoShape, NoShape, (998, 1))>)
+      #scope: (Default)
+  %14([CNode]24) = S-Prim-is_not(None, None)
+      : (<None, NoShape>, <None, NoShape>) -> (<Bool, NoShape>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:35/    if self.norm_div is not None:/
+  %15([CNode]26) = call @bool_.25(%14)
+      : (<Bool, NoShape>) -> (<Bool, NoShape>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:35/    if self.norm_div is not None:/
+  %16([CNode]27) = Switch(%15, call @✓construct.Default.28, call @✗construct.Default.15)
+      : (<Bool, NoShape>, <Func, NoShape>, <Func, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:35/    if self.norm_div is not None:/
+
+#------------------------> 0
+  %17([CNode]29) = %16()
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:35/    if self.norm_div is not None:/
+  %18([CNode]31) = call @↓construct.Default.30(%17)
+      : (<null>) -> (<null>)
+      #scope: (Default)
+  %19([CNode]32) = Depend[side_effect_propagate=I64(1)](%18, %13)
+      : (<null>, <Tuple[Func*5,Tensor[Int32]], TupleShape(NoShape, NoShape, NoShape, NoShape, NoShape, (998, 1))>) -> (<null>)
+      #scope: (Default)
+  Return(%19)
+      : (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:35/    if self.norm_div is not None:/
+}
+# Order:
+#   1: @construct.Default.14:фSCATTER_ADD{[0]: ValueNode<ClassType> class 'mindspore.ops.operations.array_ops.TensorScatterAdd'}
+#   2: @construct.Default.14:SCATTER_MAX{[0]: ValueNode<ClassType> class 'mindspore.ops.operations.array_ops.TensorScatterMax'}
+#   3: @construct.Default.14:SCATTER_MIN{[0]: ValueNode<ClassType> class 'mindspore.ops.operations.array_ops.TensorScatterMin'}
+#   4: @construct.Default.14:фGATHER{[0]: ValueNode<ClassType> class 'mindspore.ops.operations.array_ops.Gather'}
+#   5: @construct.Default.14:фZEROS{[0]: ValueNode<ClassType> class 'mindspore.ops.operations.array_ops.Zeros'}
+#   6: @construct.Default.14:FILL{[0]: ValueNode<ClassType> class 'mindspore.ops.operations.array_ops.Fill'}
+#   7: @construct.Default.14:MASKED_FILL{[0]: ValueNode<ClassType> class 'mindspore.ops.operations.array_ops.MaskedFill'}
+#   8: @construct.Default.14:IS_INF{[0]: ValueNode<ClassType> class 'mindspore.ops.operations.math_ops.IsInf'}
+#   9: @construct.Default.14:фSHAPE{[0]: ValueNode<ClassType> class 'mindspore.ops.operations.array_ops.Shape'}
+#  10: @construct.Default.14:RESHAPE{[0]: ValueNode<ClassType> class 'mindspore.ops.operations.array_ops.Reshape'}
+#  11: @construct.Default.14:[CNode]19{[0]: фSHAPE, [1]: фsrc_idx}
+#  12: @construct.Default.14:[CNode]20{[0]: ValueNode<DoSignaturePrimitive> S-Prim-getitem, [1]: [CNode]19, [2]: ValueNode<Int64Imm> 0}
+#  13: @construct.Default.14:[CNode]21{[0]: ValueNode<DoSignaturePrimitive> S-Prim-MakeTuple, [1]: [CNode]20, [2]: ValueNode<Int64Imm> 1}
+#  14: @construct.Default.14:scatter_src_idx{[0]: RESHAPE, [1]: фsrc_idx, [2]: [CNode]21}
+#  15: @construct.Default.14:[CNode]33{[0]: фSHAPE, [1]: фdst_idx}
+#  16: @construct.Default.14:[CNode]34{[0]: ValueNode<DoSignaturePrimitive> S-Prim-getitem, [1]: [CNode]33, [2]: ValueNode<Int64Imm> 0}
+#  17: @construct.Default.14:[CNode]35{[0]: ValueNode<DoSignaturePrimitive> S-Prim-MakeTuple, [1]: [CNode]34, [2]: ValueNode<Int64Imm> 1}
+#  18: @construct.Default.14:фscatter_dst_idx{[0]: RESHAPE, [1]: фdst_idx, [2]: [CNode]35}
+#  19: @construct.Default.14:x{[0]: ValueNode<FuncGraph> construct.Dropout.36, [1]: x}
+#  20: @construct.Default.14:x{[0]: ValueNode<FuncGraph> construct.Dense.16, [1]: x}
+#  21: @construct.Default.14:[CNode]37{[0]: ValueNode<ClassType> class 'mindspore.ops.operations.array_ops.Reshape'}
+#  22: @construct.Default.14:[CNode]38{[0]: ValueNode<DoSignaturePrimitive> S-Prim-negative, [1]: ValueNode<Int64Imm> 1}
+#  23: @construct.Default.14:[CNode]39{[0]: ValueNode<DoSignaturePrimitive> S-Prim-MakeTuple, [1]: [CNode]38, [2]: ValueNode<Int64Imm> 3, [3]: ValueNode<Int64Imm> 48}
+#  24: @construct.Default.14:feat_dst{[0]: [CNode]37, [1]: x, [2]: [CNode]39}
+#  25: @construct.Default.14:[CNode]40{[0]: ValueNode<ClassType> class 'mindspore.ops.operations.math_ops.ReduceSum', [1]: ValueNode<BoolImm> true}
+#  26: @construct.Default.14:[CNode]41{[0]: ValueNode<DoSignaturePrimitive> S-Prim-mul, [1]: feat_dst, [2]: attn_d}
+#  27: @construct.Default.14:[CNode]42{[0]: ValueNode<DoSignaturePrimitive> S-Prim-negative, [1]: ValueNode<Int64Imm> 1}
+#  28: @construct.Default.14:ed{[0]: [CNode]40, [1]: [CNode]41, [2]: [CNode]42}
+#  29: @construct.Default.14:[CNode]43{[0]: ValueNode<ClassType> class 'mindspore.ops.operations.math_ops.ReduceSum', [1]: ValueNode<BoolImm> true}
+#  30: @construct.Default.14:[CNode]44{[0]: ValueNode<DoSignaturePrimitive> S-Prim-mul, [1]: feat_dst, [2]: attn_s}
+#  31: @construct.Default.14:[CNode]45{[0]: ValueNode<DoSignaturePrimitive> S-Prim-negative, [1]: ValueNode<Int64Imm> 1}
+#  32: @construct.Default.14:[CNode]46{[0]: [CNode]43, [1]: [CNode]44, [2]: [CNode]45}
+#  33: @construct.Default.14:[CNode]47{[0]: ValueNode<DoSignaturePrimitive> S-Prim-make_list, [1]: [CNode]46, [2]: ed, [3]: feat_dst}
+#  34: @construct.Default.14:es{[0]: ValueNode<DoSignaturePrimitive> S-Prim-getitem, [1]: [CNode]47, [2]: ValueNode<Int64Imm> 0}
+#  35: @construct.Default.14:ed{[0]: ValueNode<DoSignaturePrimitive> S-Prim-getitem, [1]: [CNode]47, [2]: ValueNode<Int64Imm> 1}
+#  36: @construct.Default.14:фfeat_src{[0]: ValueNode<DoSignaturePrimitive> S-Prim-getitem, [1]: [CNode]47, [2]: ValueNode<Int64Imm> 2}
+#  37: @construct.Default.14:[CNode]24{[0]: ValueNode<DoSignaturePrimitive> S-Prim-is_not, [1]: ValueNode<None> None, [2]: ValueNode<None> None}
+#  38: @construct.Default.14:[CNode]26{[0]: ValueNode<FuncGraph> bool_.25, [1]: [CNode]24}
+#  39: @construct.Default.14:[CNode]48{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore_gl.nn.conv.gatconv..<GATConv::140447231200448>', [2]: ValueNode<Symbol> norm_constant}
+#  40: @construct.Default.14:[CNode]27{[0]: ValueNode<Primitive> Switch, [1]: [CNode]26, [2]: ValueNode<FuncGraph> ✓construct.Default.28, [3]: ValueNode<FuncGraph> ✗construct.Default.15}
+#  41: @construct.Default.14:[CNode]29{[0]: [CNode]27}
+#  42: @construct.Default.14:[CNode]31{[0]: ValueNode<FuncGraph> ↓construct.Default.30, [1]: [CNode]29}
+#  43: @construct.Default.14:[CNode]32{[0]: ValueNode<Primitive> Depend, [1]: [CNode]31, [2]: [CNode]23}
+#  44: @construct.Default.14:[CNode]49{[0]: ValueNode<Primitive> Return, [1]: [CNode]32}
+
+
+subgraph attr:
+subgraph instance: ✗construct.Default.15 : 0x6fe0d60
+# In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:35/    if self.norm_div is not None:/
+subgraph @✗construct.Default.15 parent: [subgraph @construct.Default.14]() {
+  %1(фGATHER) = $(construct.Default.14):ClassType()
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:42/        edge / GATHER(/
+  %2([CNode]43) = $(construct.Default.14):ClassType(Bool(1))
+      : (<Bool, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:34/    es, ed, feat_src = [ms.ops.ReduceSum(True)(feat_src * self.attn_s, -1), ed, feat_src]/
+  %3([CNode]37) = $(construct.Default.14):ClassType()
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:32/    feat_src = feat_dst = ms.ops.Reshape()(x, (-1, self.num_attn_head, self.out_size))/
+  %4(x) = $(construct.Default.14):call @construct.Dropout.36(%para1_x)
+      : (<Tensor[Float32], (251, 276)>) -> (<Tensor[Float32], (251, 276)>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:30/    x = self.feat_drop(x)/
+
+#------------------------> 1
+  %5(x) = $(construct.Default.14):call @construct.Dense.16(%4)
+      : (<Tensor[Float32], (251, 276)>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:31/    x = self.fc(x)/
+  %6([CNode]38) = $(construct.Default.14):S-Prim-negative(I64(1))
+      : (<null>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:32/    feat_src = feat_dst = ms.ops.Reshape()(x, (-1, self.num_attn_head, self.out_size))/
+  %7([CNode]39) = $(construct.Default.14):S-Prim-MakeTuple(%6, I64(3), I64(48))
+      : (<null>, <null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:32/    feat_src = feat_dst = ms.ops.Reshape()(x, (-1, self.num_attn_head, self.out_size))/
+  %8(feat_dst) = $(construct.Default.14):%3(%5, %7)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:32/    feat_src = feat_dst = ms.ops.Reshape()(x, (-1, self.num_attn_head, self.out_size))/
+  %9([CNode]44) = $(construct.Default.14):S-Prim-mul(%8, %para7_attn_s)
+      : (<null>, <Ref[Tensor[Float32]], (3, 48)>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:34/    es, ed, feat_src = [ms.ops.ReduceSum(True)(feat_src * self.attn_s, -1), ed, feat_src]/
+  %10([CNode]45) = $(construct.Default.14):S-Prim-negative(I64(1))
+      : (<null>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:34/    es, ed, feat_src = [ms.ops.ReduceSum(True)(feat_src * self.attn_s, -1), ed, feat_src]/
+  %11([CNode]46) = $(construct.Default.14):%2(%9, %10)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:34/    es, ed, feat_src = [ms.ops.ReduceSum(True)(feat_src * self.attn_s, -1), ed, feat_src]/
+  %12([CNode]40) = $(construct.Default.14):ClassType(Bool(1))
+      : (<null>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:33/    ed = ms.ops.ReduceSum(True)(feat_dst * self.attn_d, -1)/
+  %13([CNode]41) = $(construct.Default.14):S-Prim-mul(%8, %para8_attn_d)
+      : (<null>, <Ref[Tensor[Float32]], (3, 48)>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:33/    ed = ms.ops.ReduceSum(True)(feat_dst * self.attn_d, -1)/
+  %14([CNode]42) = $(construct.Default.14):S-Prim-negative(I64(1))
+      : (<null>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:33/    ed = ms.ops.ReduceSum(True)(feat_dst * self.attn_d, -1)/
+  %15(ed) = $(construct.Default.14):%12(%13, %14)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:33/    ed = ms.ops.ReduceSum(True)(feat_dst * self.attn_d, -1)/
+  %16([CNode]47) = $(construct.Default.14):S-Prim-make_list(%11, %15, %8)
+      : (<null>, <null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:34/    es, ed, feat_src = [ms.ops.ReduceSum(True)(feat_src * self.attn_s, -1), ed, feat_src]/
+  %17(es) = $(construct.Default.14):S-Prim-getitem(%16, I64(0))
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:34/    es, ed, feat_src = [ms.ops.ReduceSum(True)(feat_src * self.attn_s, -1), ed, feat_src]/
+  %18([CNode]50) = %1(%17, %para2_фsrc_idx, I64(0))
+      : (<null>, <Tensor[Int32], (998)>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:39/        edge = self.exp(self.leaky_relu(GATHER(es, src_idx, 0) + GATHER(ed, dst_idx, 0)))/
+  %19(ed) = $(construct.Default.14):S-Prim-getitem(%16, I64(1))
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:34/    es, ed, feat_src = [ms.ops.ReduceSum(True)(feat_src * self.attn_s, -1), ed, feat_src]/
+  %20([CNode]51) = %1(%19, %para3_фdst_idx, I64(0))
+      : (<null>, <Tensor[Int32], (998)>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:39/        edge = self.exp(self.leaky_relu(GATHER(es, src_idx, 0) + GATHER(ed, dst_idx, 0)))/
+  %21([CNode]52) = S-Prim-add(%18, %20)
+      : (<null>, <null>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:39/        edge = self.exp(self.leaky_relu(GATHER(es, src_idx, 0) + GATHER(ed, dst_idx, 0)))/
+  %22([CNode]54) = call @construct.LeakyReLU.53(%21)
+      : (<null>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:39/        edge = self.exp(self.leaky_relu(GATHER(es, src_idx, 0) + GATHER(ed, dst_idx, 0)))/
+  %23(edge) = S-Prim-Exp[output_names=["y"], shift=F32(0), scale=F32(1), input_names=["x"], base=F32(-1)](%22)
+      : (<null>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:39/        edge = self.exp(self.leaky_relu(GATHER(es, src_idx, 0) + GATHER(ed, dst_idx, 0)))/
+  Return(%23)
+      : (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:35/    if self.norm_div is not None:/
+}
+# Order:
+#   1: @✗construct.Default.15:[CNode]50{[0]: фGATHER, [1]: es, [2]: фsrc_idx, [3]: ValueNode<Int64Imm> 0}
+#   2: @✗construct.Default.15:[CNode]51{[0]: фGATHER, [1]: ed, [2]: фdst_idx, [3]: ValueNode<Int64Imm> 0}
+#   3: @✗construct.Default.15:[CNode]52{[0]: ValueNode<DoSignaturePrimitive> S-Prim-add, [1]: [CNode]50, [2]: [CNode]51}
+#   4: @✗construct.Default.15:[CNode]54{[0]: ValueNode<FuncGraph> construct.LeakyReLU.53, [1]: [CNode]52}
+#   5: @✗construct.Default.15:edge{[0]: ValueNode<DoSignaturePrimitive> S-Prim-Exp, [1]: [CNode]54}
+#   6: @✗construct.Default.15:[CNode]55{[0]: ValueNode<Primitive> Return, [1]: edge}
+
+
+subgraph attr:
+subgraph instance: construct.Dense.16 : 0x70ba5f0
+# In file /home/xzfang00/apps/pyenvs/ms/lib/python3.8/site-packages/mindspore/nn/layer/basic.py:590/    def construct(self, x):/
+subgraph @construct.Dense.16 parent: [subgraph @construct.Default.14](%para10_x) {
+  %1(фx_shape) = S-Prim-Shape(%para10_x)
+      : (<Tensor[Float32], (251, 276)>) -> (<Tuple[Int64*2], TupleShape(NoShape, NoShape)>)
+      #scope: (Default/fc-Dense)
+      # In file /home/xzfang00/apps/pyenvs/ms/lib/python3.8/site-packages/mindspore/nn/layer/basic.py:600/        if len(x_shape) != 2:/
+  %2([CNode]56) = S-Prim-check_dense_input_shape[constexpr_prim=Bool(1)](%1, "Dense")
+      : (<Tuple[Int64*2], TupleShape(NoShape, NoShape)>, <String, NoShape>) -> (<None, NoShape>)
+      #scope: (Default/fc-Dense)
+      # In file /home/xzfang00/apps/pyenvs/ms/lib/python3.8/site-packages/mindspore/nn/layer/basic.py:592/        check_dense_input_shape(x_shape, self.cls_name)/
+  %3([CNode]57) = StopGradient(%2)
+      : (<None, NoShape>) -> (<None, NoShape>)
+      #scope: (Default/fc-Dense)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:31/    x = self.fc(x)/
+  %4([CNode]59) = call @ms_len.58(%1)
+      : (<Tuple[Int64*2], TupleShape(NoShape, NoShape)>) -> (<Int64, NoShape>)
+      #scope: (Default/fc-Dense)
+      # In file /home/xzfang00/apps/pyenvs/ms/lib/python3.8/site-packages/mindspore/nn/layer/basic.py:593/        if len(x_shape) != 2:/
+  %5([CNode]60) = S-Prim-not_equal(%4, I64(2))
+      : (<Int64, NoShape>, <Int64, NoShape>) -> (<Bool, NoShape>)
+      #scope: (Default/fc-Dense)
+      # In file /home/xzfang00/apps/pyenvs/ms/lib/python3.8/site-packages/mindspore/nn/layer/basic.py:593/        if len(x_shape) != 2:/
+  %6([CNode]61) = call @bool_.25(%5)
+      : (<Bool, NoShape>) -> (<Bool, NoShape>)
+      #scope: (Default/fc-Dense)
+      # In file /home/xzfang00/apps/pyenvs/ms/lib/python3.8/site-packages/mindspore/nn/layer/basic.py:593/        if len(x_shape) != 2:/
+  %7([CNode]62) = Switch(%6, call @✓construct.Dense.63, call @✗construct.Dense.64)
+      : (<Bool, NoShape>, <Func, NoShape>, <Func, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default/fc-Dense)
+      # In file /home/xzfang00/apps/pyenvs/ms/lib/python3.8/site-packages/mindspore/nn/layer/basic.py:593/        if len(x_shape) != 2:/
+  %8([CNode]65) = %7()
+      #scope: (Default/fc-Dense)
+      # In file /home/xzfang00/apps/pyenvs/ms/lib/python3.8/site-packages/mindspore/nn/layer/basic.py:593/        if len(x_shape) != 2:/
+
+#------------------------> 2
+  %9([CNode]66) = call @↓construct.Dense.17(%8)
+      : (<Tensor[Float32], (251, 276)>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:31/    x = self.fc(x)/
+  %10([CNode]67) = Depend[side_effect_propagate=I64(1)](%9, %3)
+      : (<null>, <None, NoShape>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:31/    x = self.fc(x)/
+  Return(%10)
+      : (<null>)
+      #scope: (Default/fc-Dense)
+      # In file /home/xzfang00/apps/pyenvs/ms/lib/python3.8/site-packages/mindspore/nn/layer/basic.py:593/        if len(x_shape) != 2:/
+}
+# Order:
+#   1: @construct.Dense.16:фx_shape{[0]: ValueNode<DoSignaturePrimitive> S-Prim-Shape, [1]: x}
+#   2: @construct.Dense.16:[CNode]56{[0]: ValueNode<DoSignaturePrimitive> S-Prim-check_dense_input_shape, [1]: фx_shape, [2]: ValueNode<StringImm> Dense}
+#   3: @construct.Dense.16:[CNode]59{[0]: ValueNode<FuncGraph> ms_len.58, [1]: фx_shape}
+#   4: @construct.Dense.16:[CNode]60{[0]: ValueNode<DoSignaturePrimitive> S-Prim-not_equal, [1]: [CNode]59, [2]: ValueNode<Int64Imm> 2}
+#   5: @construct.Dense.16:[CNode]61{[0]: ValueNode<FuncGraph> bool_.25, [1]: [CNode]60}
+#   6: @construct.Dense.16:[CNode]62{[0]: ValueNode<Primitive> Switch, [1]: [CNode]61, [2]: ValueNode<FuncGraph> ✓construct.Dense.63, [3]: ValueNode<FuncGraph> ✗construct.Dense.64}
+#   7: @construct.Dense.16:[CNode]65{[0]: [CNode]62}
+#   8: @construct.Dense.16:фself.bias_add{[0]: ValueNode<Primitive> resolve, [1]: ValueNode<NameSpace> ClassMember: 'Namespace:mindspore.nn.layer.basic..<Dense::140447231342768>', [2]: ValueNode<Symbol> bias_add}
+#   9: @construct.Dense.16:[CNode]66{[0]: ValueNode<FuncGraph> ↓construct.Dense.17, [1]: [CNode]65}
+#  10: @construct.Dense.16:[CNode]67{[0]: ValueNode<Primitive> Depend, [1]: [CNode]66, [2]: [CNode]57}
+#  11: @construct.Dense.16:[CNode]68{[0]: ValueNode<Primitive> Return, [1]: [CNode]67}
+
+
+subgraph attr:
+after_block : 1
+subgraph instance: ↓construct.Dense.17 : 0x7305c30
+# In file /home/xzfang00/apps/pyenvs/ms/lib/python3.8/site-packages/mindspore/nn/layer/basic.py:593/        if len(x_shape) != 2:/
+subgraph @↓construct.Dense.17 parent: [subgraph @construct.Dense.16](%para11_) {
+  %1([CNode]69) = call @bool_.25(Bool(0))
+      : (<Bool, NoShape>) -> (<Bool, NoShape>)
+      #scope: (Default/fc-Dense)
+      # In file /home/xzfang00/apps/pyenvs/ms/lib/python3.8/site-packages/mindspore/nn/layer/basic.py:596/        if self.has_bias:/
+  %2([CNode]70) = Switch(%1, call @✓↓construct.Dense.71, call @✗↓construct.Dense.18)
+      : (<Bool, NoShape>, <Func, NoShape>, <Func, NoShape>) -> (<Func, NoShape>)
+      #scope: (Default/fc-Dense)
+      # In file /home/xzfang00/apps/pyenvs/ms/lib/python3.8/site-packages/mindspore/nn/layer/basic.py:596/        if self.has_bias:/
+
+#------------------------> 3
+  %3([CNode]72) = %2()
+      #scope: (Default/fc-Dense)
+      # In file /home/xzfang00/apps/pyenvs/ms/lib/python3.8/site-packages/mindspore/nn/layer/basic.py:596/        if self.has_bias:/
+  %4([CNode]74) = call @↓↓construct.Dense.73(%3)
+      : (<null>) -> (<null>)
+      #scope: (Default)
+      # In file /mnt/c/Users/xzfang/Desktop/.mindspore_gl/552794390506950940/construct-1.py:31/    x = self.fc(x)/
+  Return(%4)
+      : (<null>)
+      #scope: (Default/fc-Dense)
+      # In file /home/xzfang00/apps/pyenvs/ms/lib/python3.8/site-packages/mindspore/nn/layer/basic.py:596/        if self.has_bias:/
+}
+# Order:
+#   1: @↓construct.Dense.17:x{[0]: ValueNode<DoSignaturePrimitive> S-Prim-MatMul, [1]: фx, [2]: fc.weight}
+#   2: @↓construct.Dense.17:[CNode]69{[0]: ValueNode<FuncGraph> bool_.25, [1]: ValueNode<BoolImm> false}
+#   3: @↓construct.Dense.17:[CNode]70{[0]: ValueNode<Primitive> Switch, [1]: [CNode]69, [2]: ValueNode<FuncGraph> ✓↓construct.Dense.71, [3]: ValueNode<FuncGraph> ✗↓construct.Dense.18}
+#   4: @↓construct.Dense.17:[CNode]72{[0]: [CNode]70}
+#   5: @↓construct.Dense.17:[CNode]74{[0]: ValueNode<FuncGraph> ↓↓construct.Dense.73, [1]: [CNode]72}
+#   6: @↓construct.Dense.17:[CNode]75{[0]: ValueNode<Primitive> Return, [1]: [CNode]74}
+
+
+subgraph attr:
+subgraph instance: ✗↓construct.Dense.18 : 0x6f72b30
+# In file /home/xzfang00/apps/pyenvs/ms/lib/python3.8/site-packages/mindspore/nn/layer/basic.py:596/        if self.has_bias:/
+subgraph @✗↓construct.Dense.18 parent: [subgraph @↓construct.Dense.17]() {
+
+#------------------------> 4
+  %1(x) = $(↓construct.Dense.17):S-Prim-MatMul[output_names=["output"], transpose_a=Bool(0), input_names=["x1", "x2"], transpose_x2=Bool(1), transpose_x1=Bool(0), transpose_b=Bool(1)](%para11_фx, %para9_fc.weight)
+      : (<Tensor[Float32], (251, 276)>, <Ref[Tensor[Float32]], (144, 92)>) -> (<null>)
+      #scope: (Default/fc-Dense)
+      # In file /home/xzfang00/apps/pyenvs/ms/lib/python3.8/site-packages/mindspore/nn/layer/basic.py:595/        x = self.matmul(x, self.weight)/
+  Return(%1)
+      : (<null>)
+      #scope: (Default/fc-Dense)
+      # In file /home/xzfang00/apps/pyenvs/ms/lib/python3.8/site-packages/mindspore/nn/layer/basic.py:596/        if self.has_bias:/
+}
+# Order:
+#   1: @✗↓construct.Dense.18:[CNode]76{[0]: ValueNode<Primitive> Return, [1]: x}
+
+
+#===============================================================================
+# num of function graphs in stack: 5/6 (Ignored 1 internal frames).
